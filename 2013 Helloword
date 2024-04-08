@@ -1,0 +1,60 @@
+#2013 Helloword
+#Python Code
+def check_program(p):
+    st= []
+    if(p[0] != '{' or p[-1]!='}' or '>' not in p or '<' not in p ):
+        return "compilation error"
+    
+    i=1
+    count=0
+    while(i<len(p)-1):
+       
+        if p[i] == '<':
+            if(count>0):
+                return "compilation error"
+            count+=1
+            for j in range(i+1,len(p)-1):
+                if(p[j] in "{"):
+                    st.append(p[j])
+                elif(p[j] =='}'):
+                    if(st[-1]=='{'):
+                        st.pop()
+                    else:
+                        return "compilation error"
+                elif(p[j] in "()"):
+                    return "compilation error"
+                elif(p[j]=='>'):
+                    i=j
+                    break
+                elif(p[j]=="P"):
+                    continue
+                else:
+                    return "compilation error"
+        elif(p[i]=="("):
+            for j in range(i+1,len(p)-1):
+                if(p[j] in "{"):
+                    st.append(p[j])
+                elif(p[j] =='}'):
+                    if(st[-1]=='{'):
+                        st.pop()
+                    else:
+                        return "compilation error"
+                elif(p[j]=="P"):
+                    continue
+                elif(p[j]==')'):
+                    i=j
+                    break
+                else:
+                    return "compilation error"
+        else:
+            return "compilation error"
+        
+        if st:
+            return "compilation error"
+        i+=1
+    return "No compilation error"
+z=int(input("Enter no Testcase"))   
+for i in range(z):
+    program = input()
+    result = check_program(program)
+    print(result)
