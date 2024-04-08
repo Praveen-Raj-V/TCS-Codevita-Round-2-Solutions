@@ -1,0 +1,22 @@
+#2013 brokage 
+a=int(input())
+for i in range(a):
+    b,cp,sp,n=map(float,input().split())
+    tcp=cp*n
+    tsp=sp*n 
+    bc=tcp*b/100
+    sc=bc*0.1036
+    t1=sc+bc
+    bs=tsp*b/100
+    stt=0.00025*tsp
+    t2=bs+sc+stt
+    tamt=t1+t2
+    #print("tamt",tamt)
+    sd=(tcp+tsp)*0.00006
+    t3=tamt+sd
+    #print("t3 sd",t3,sd)
+    x=(tsp-tcp)
+    if(x>t3):
+        print("Profit",x-t3)
+    else:
+        print("Loss",t3-x)
