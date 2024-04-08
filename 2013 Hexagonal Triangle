@@ -1,0 +1,22 @@
+#Hexagonal Triangle 2013
+h=[]
+t=[]
+res=[]
+s,e,m=map(int,input().split())
+i=1
+a,b=0,0
+while(a<=e or b<=e):
+    a=i*((2*i)-1)
+    b=i*(i+1)/2
+    if(a>=s and a<=e):
+        h.append(a)
+    if(b>=s and b<=e):
+        t.append(b)
+    i+=1
+for i in h:
+    if i in t:
+        res.append(i)
+if m<=len(res):
+    print(res[m-1])
+else:
+    print("No number is present at this index")
