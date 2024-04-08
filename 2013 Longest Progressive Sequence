@@ -1,0 +1,26 @@
+#2013 longest progressive seq
+n=int(input("No of Testcase :"))
+for i in range(n):
+    a=int(input())
+    lst=list(map(int,input().split()))
+    mx=0
+    z=0 
+    y=0
+    for k in range(a-1):
+        ctr=0
+        for j in range(k,a-1):
+            if(lst[j]<=lst[j+1]):
+                ctr+=1
+                
+            else:
+                break
+            if(j==a-2):
+                if(lst[j+1]>=lst[j]):
+                    
+                    j+=1
+        if(mx<ctr):
+            mx=ctr
+            z=j
+            y=k
+    for n in range(y,z+1):
+        print(lst[n],end=" ")
